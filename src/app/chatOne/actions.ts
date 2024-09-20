@@ -3,6 +3,7 @@
 import { streamText } from 'ai';
 import { createStreamableValue } from 'ai/rsc';
 import { createOpenAI } from '@ai-sdk/openai';
+import { createAnthropic } from '@ai-sdk/anthropic';
 
 const openai = createOpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -13,7 +14,7 @@ export interface Message {
   content: string;
 }
 
-export async function continueConversation(history: Message[]) {
+export async function continueConversationWithOpenAi(history: Message[]) {
   'use server';
 
   const stream = createStreamableValue();

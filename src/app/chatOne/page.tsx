@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Message, continueConversation } from './actions';
+import { Message, continueConversationWithOpenAi } from './actions';
 import { readStreamableValue } from 'ai/rsc';
 
 // Allow streaming responses up to 30 seconds
@@ -31,7 +31,7 @@ export default function Home() {
         />
         <button
           onClick={async () => {
-            const { messages, newMessage } = await continueConversation([
+            const { messages, newMessage } = await continueConversationWithOpenAi([
               ...conversation,
               { role: 'user', content: input },
             ]);
